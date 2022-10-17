@@ -21,9 +21,10 @@ public LinearEquation (int x1, int y1, int x2, int y2){
 /* Calculates and returns distance between (x1, y1) and (x2, y2), rounded to
    the nearest hundredth */
         public double distance (){
-            int xDistance = Math.pow(x2 - x1,2);
-            int yDistnace = Math.pow(y2 - y1,2);
-            return Math.round(Math.sqrt(xDistnace + yDistance) * 100) / 100;
+            double xDistance = Math.pow(x2 - x1,2);
+            double yDistnace = Math.pow(y2 - y1,2);
+            double distance1 = xDistnace + yDistance);
+            return Math.round(distance1 * 100) / 100;
         }
 
 
@@ -36,7 +37,9 @@ public LinearEquation (int x1, int y1, int x2, int y2){
 
         /* Calculates and returns the slope of the line between (x1, y1) and
            (x2, y2), rounded to the nearest hundredth */
-        public double slope()
+        public double slope(){
+            return
+        }
 
 
 
