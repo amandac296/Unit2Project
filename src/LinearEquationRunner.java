@@ -10,7 +10,7 @@ public class LinearEquationRunner {
         int comma1 = coordinate1.indexOf(",");
         int end1 = coordinate1.indexOf(")");
         String xVal1 = coordinate1.substring(1, comma1);
-        String yVal1 = coordinate1.substring(comma1 + 1, end1);
+        String yVal1 = coordinate1.substring(comma1 + 2, end1);
         int xValue1 = Integer.parseInt(xVal1);
         int yValue1 = Integer.parseInt(yVal1);
         System.out.print("Enter coordinate 2: ");
@@ -18,7 +18,7 @@ public class LinearEquationRunner {
         int comma2 = coordinate2.indexOf(",");
         int end2 = coordinate2.indexOf(")");
         String xVal2 = coordinate2.substring(1, comma2);
-        String yVal2 = coordinate2.substring(comma2 + 1, end2);
+        String yVal2 = coordinate2.substring(comma2 + 2, end2);
         int xValue2 = Integer.parseInt(xVal2);
         int yValue2 = Integer.parseInt(yVal2);
         System.out.println();

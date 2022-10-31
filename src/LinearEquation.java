@@ -94,7 +94,7 @@ public LinearEquation(int x1, int y1, int x2, int y2)
         if (yIntercept() == 0){
             formula = "y = " + m;
         } else if (yIntercept() < 0){
-            formula = " y = " + m + yIntercept();
+            formula = " y = " + m + " - " + Math.abs(yIntercept());
         } else if (slope() == 0) {
             formula = " y = " + (int) yIntercept();
         } else {
