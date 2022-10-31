@@ -21,25 +21,28 @@ public LinearEquation(int x1, int y1, int x2, int y2)
     }
 
     /* Calculates and returns distance between (x1, y1) and (x2, y2), rounded to
-       the nearest hundredth */
+       the nearest hundredth */ //yes
     public double distance() {
         double xDistance = Math.pow(x2 - x1, 2);
         double yDistance = Math.pow(y2 - y1, 2);
-        return Math.sqrt(xDistance + yDistance);
+        double dist = Math.sqrt(xDistance + yDistance);
+        return roundedToHundredth(dist);
     }
 
 
     /* Calculates and returns the y-intercept of the line between (x1, y1) and
        (x2, y2), rounded to the nearest hundredth */
     public double yIntercept() {
-        return y1 - (slope() * x1);
+        double yInt = y1 - (slope() * x1);
+        return roundedToHundredth(yInt);
     }
 
 
     /* Calculates and returns the slope of the line between (x1, y1) and
        (x2, y2), rounded to the nearest hundredth */
     public double slope() {
-        return (y2 - y1) / (x2 - x1);
+        double slope = (double) (y2 - y1) / (double)(x2 - x1);
+        return roundedToHundredth(slope);
     }
 
     /* Returns a String that represents the linear equation of the line through points
@@ -68,24 +71,34 @@ public LinearEquation(int x1, int y1, int x2, int y2)
      */
     public String equation() {
         //slope values
-        double numY = y2-y1;
-        double domX = x2-x1;
-        String m = "1x";
+        int numY = y2-y1;
+        int denX = x2-x1;
+        String m;
         if (slope() == 0) {
-            m = " ";
-        } else if (domX < 0 ) {
-            m = "-" + Math.abs(slope()) + "x";
+            m = "";
+        } else if (slope() == 1) {
+            m = "x";
+        } else if (slope() == -1) {
+            m = "-x";
+        } else if (numY % denX == 0) {
+            m = (int)slope() + "x";
+        } else if (denX < 0  && numY > 0) {
+            m = " -" + numY + "/" + Math.abs(denX) + "x";
+        } else if (denX < 0  && numY < 0) {
+            m = Math.abs(numY) + "/" + Math.abs(denX) + "x";
         } else {
-            m = " " + slope() + "x";
+            m = numY + "/" + denX + "x";
         }
         //y-intercept form with slope value
         String formula = "";
         if (yIntercept() == 0){
-            formula = "y = " + m + yIntercept();
+            formula = "y = " + m;
         } else if (yIntercept() < 0){
             formula = " y = " + m + yIntercept();
+        } else if (slope() == 0) {
+            formula = " y = " + (int) yIntercept();
         } else {
-            formula = "y = " + m + yIntercept();
+            formula = "y = " + m + " + " + yIntercept();
         }
             return formula;
     }
@@ -94,8 +107,8 @@ public LinearEquation(int x1, int y1, int x2, int y2)
     /* Returns a String of the coordinate point on the line that has the given x value, with
        both x and y coordinates as decimals to the nearest hundredth, e.g (-5.0, 6.75) */
     public String coordinateForX(double xValue) {
-        double yValue = slope() * xValue + yIntercept();
-        return "(" + xValue + ", " + yValue + ")";
+        double yValue = (slope() * xValue) + yIntercept();
+        return "The point on the line is (" + xValue + ", " + yValue + ")";
     }
 
 
@@ -105,7 +118,8 @@ public LinearEquation(int x1, int y1, int x2, int y2)
         HINT:  the Math.round method can help with this!
      */
     public double roundedToHundredth(double toRound) {
-        return Math.round(toRound * 100) / 100;
+        double round = Math.round(toRound * 100.0) / 100.0;
+        return round;
     }
 
 
@@ -122,9 +136,9 @@ public LinearEquation(int x1, int y1, int x2, int y2)
 
       */
     public String lineInfo() {
-        return " The original points: (" + x1 + ", " + y1 + ") and (" + x2 + ", " + y2 + ")" +
-                "\n The equation fo the line in y = mx + b format: " + equation() +
-                "\n The slope of the line: " + roundedToHundredth(slope()) + "\n The y-intercept of the line: " +
-                roundedToHundredth(yIntercept()) + "\n The distance between the two points: " + roundedToHundredth(distance());
+        return " The two points are: (" + x1 + ", " + y1 + ") and (" + x2 + ", " + y2 + ")" +
+                "\n The equation fo the line between these points is: " + equation() +
+                "\n The slope of the line is: " + slope() + "\n The y-intercept of the line is: "
+                + yIntercept() + "\n The distance between the two points is: " + distance();
     }
         }
