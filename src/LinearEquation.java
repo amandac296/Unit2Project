@@ -11,7 +11,6 @@ public class LinearEquation {
     /* Creates a LinearEquation object */
 /* PRECONDITION: x1 and x2 are NOT equal (client programs are responsible for ensuring
    this precondition is not violated)
-public LinearEquation(int x1, int y1, int x2, int y2)
  */
     public LinearEquation(int x1, int y1, int x2, int y2) {
         this.x1 = x1;
@@ -21,7 +20,7 @@ public LinearEquation(int x1, int y1, int x2, int y2)
     }
 
     /* Calculates and returns distance between (x1, y1) and (x2, y2), rounded to
-       the nearest hundredth */ //yes
+       the nearest hundredth */
     public double distance() {
         double xDistance = Math.pow(x2 - x1, 2);
         double yDistance = Math.pow(y2 - y1, 2);
@@ -93,10 +92,10 @@ public LinearEquation(int x1, int y1, int x2, int y2)
         String formula = "";
         if (yIntercept() == 0){
             formula = "y = " + m;
-        } else if (yIntercept() < 0){
-            formula = " y = " + m + " - " + Math.abs(yIntercept());
         } else if (slope() == 0) {
             formula = " y = " + (int) yIntercept();
+        } else if (yIntercept() < 0){
+            formula = " y = " + m + " - " + Math.abs(yIntercept());
         } else {
             formula = "y = " + m + " + " + yIntercept();
         }
@@ -132,9 +131,7 @@ public LinearEquation(int x1, int y1, int x2, int y2)
          - The distance between the two points (using distance() method)
 
       This method should call all other appropriate methods to get the info it needs:
-      equation(), slope(), yIntercept(), distance().
-
-      */
+      equation(), slope(), yIntercept(), distance(). */
     public String lineInfo() {
         return " The two points are: (" + x1 + ", " + y1 + ") and (" + x2 + ", " + y2 + ")" +
                 "\n The equation fo the line between these points is: " + equation() +
